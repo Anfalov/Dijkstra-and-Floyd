@@ -11,7 +11,6 @@ using namespace std;
 #define pii pair<int, int>
 
 int n, m;
-vector <vector<pair<int, int>>> g;
 vector<vector<int>> d, nxt;
 
 void Floyd()
@@ -41,7 +40,6 @@ int main()
 {
 	int s;
 	cin >> n >> m;
-	g.resize(n);
 	d.resize(n, vector<int>(n, INF));
 	nxt.resize(n, vector<int>(n, -1));
 	for (int i = 0; i < m; i++)
@@ -49,10 +47,10 @@ int main()
 		int a, b, r;
 		cin >> a >> b >> r;
 		//a--; b--;
-		g[a].push_back({ b, r });
 		//g[b].push_back({ a, r });
 		d[a][b] = r;
 		//d[b][a] = r;
+		nxt[a][b] = b;
 	}
 	for (int i = 0; i < n; i++)
 		d[i][i] = 0;
